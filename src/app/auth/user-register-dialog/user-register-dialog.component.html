@@ -1,15 +1,15 @@
 <div class="dialog-container">
     <h2>Cadastro de Usuário</h2>
     <mat-divider></mat-divider>
-    <form>
+    <form [formGroup]="userForm">
         <mat-form-field appearance="outline" class="full-width">
             <mat-label>Email</mat-label>
-            <input matInput type="email" required>
+            <input matInput formControlName="email" type="email" required>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
             <mat-label>Senha</mat-label>
-            <input matInput type="password" required />
+            <input matInput formControlName="password" type="password" required />
             <!-- <mat-error *ngIf="userForm.get('password')?.invalid">
               A senha deve ter pelo menos 6 caracteres
             </mat-error> -->
@@ -17,7 +17,7 @@
 
         <mat-form-field appearance="outline" class="full-width">
             <mat-label>Confirmação de Senha</mat-label>
-            <input matInput type="password" required />
+            <input matInput formControlName="confirmPassword" type="password" required />
             <!-- <mat-error *ngIf="userForm.get('password')?.invalid">
               A senha deve ter pelo menos 6 caracteres
             </mat-error> -->
