@@ -1,0 +1,41 @@
+<div class="dialog-container">
+    <h2>Cadastro de Usuário</h2>
+    <mat-divider></mat-divider>
+    <form>
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Senha</mat-label>
+            <input matInput type="password" required />
+            <!-- <mat-error *ngIf="userForm.get('password')?.invalid">
+              A senha deve ter pelo menos 6 caracteres
+            </mat-error> -->
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Confirmação de Senha</mat-label>
+            <input matInput type="password" required />
+            <!-- <mat-error *ngIf="userForm.get('password')?.invalid">
+              A senha deve ter pelo menos 6 caracteres
+            </mat-error> -->
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Tipo de Usuário</mat-label>
+            <mat-select>
+                <mat-option value="Admin">Admin</mat-option>
+                <mat-option value="User">User</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="button-container">
+            <button mat-button>Cancelar</button>
+            <button mat-raised-button color="primary" type="submit">
+                Cadastrar
+            </button>
+        </div>
+    </form>
+</div>

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { UserRegisterDialogComponent } from '../user-register-dialog/user-register-dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,11 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private dialog: MatDialog,
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -25,5 +31,17 @@ export class LoginComponent {
 
       this.loginForm.reset();
     }
+  }
+
+  openRegisterDialog() {
+    const dialogRef = this.dialog.open(UserRegisterDialogComponent, {
+      width: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log('Usuário cadastrado com sucesso!', result);
+      }
+    });
   }
 }

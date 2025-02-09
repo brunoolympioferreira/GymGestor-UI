@@ -1,0 +1,37 @@
+/* Estiliza o container principal do diálogo */
+.dialog-container {
+  padding: 24px;
+}
+
+/* Centraliza o conteúdo do diálogo */
+h2 {
+  text-align: center;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+/* Define a largura total dos campos */
+.full-width {
+  width: 100%;
+}
+
+/* Espaçamento entre os campos */
+mat-form-field {
+  display: block;
+  margin-bottom: 14px;
+}
+
+/* Estilização dos botões */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+button {
+  width: 48%;
+}
+
+mat-divider {
+  margin: 16px 0;
+}
