@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-register-dialog',
@@ -10,21 +11,21 @@ export class UserRegisterDialogComponent {
   userForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private dialogRef: MatDialogRef<UserRegisterDialogComponent>
   ) {
     this.userForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
       role: ['User', Validators.required]
-    },
-      { Validators: this.passwordMatchValidator }
-    )
+    });
   }
 
-  passwordMatchValidator(group: AbstractControl): ValidationErrors | null {
-    const password = group.get('password')?.value;
-    const confirmPassword = group.get('confirmPassword')?.value;
-    return password === confirmPassword ? null : { passwordsMismatch: true };
+  onSubmit() {
+
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
   }
 }

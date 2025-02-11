@@ -1,4 +1,3 @@
--> Mensagens de erro nas validações de campos de criar usuario
 -> crar uma interface de role e deixar ele dinamico no html
 -> deixar a role user como pré-selecionada
 
