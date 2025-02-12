@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Role } from '../../shared/models/user';
 
 @Component({
   selector: 'app-user-register-dialog',
@@ -9,6 +10,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class UserRegisterDialogComponent {
   userForm: FormGroup;
+  roles: Role[] = ['Admin', 'User'];
 
   constructor(
     private fb: FormBuilder,

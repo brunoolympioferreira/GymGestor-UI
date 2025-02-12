@@ -21,9 +21,10 @@
 
         <mat-form-field appearance="outline" class="full-width">
             <mat-label>Tipo de Usuário</mat-label>
-            <mat-select>
-                <mat-option value="Admin">Admin</mat-option>
-                <mat-option value="User">User</mat-option>
+            <mat-select formControlName="role">
+                <mat-option *ngFor="let role of roles" [value]="role">
+                    {{role}}
+                </mat-option>
             </mat-select>
         </mat-form-field>
 
