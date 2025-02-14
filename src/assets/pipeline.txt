@@ -1,1 +1,2 @@
--> implementar servico de auth e comunicação com api
+-> implementar autenticação do usuário
+

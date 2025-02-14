@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatSelectModule } from '@angular/material/select'
 import { MatDividerModule } from '@angular/material/divider';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -23,6 +23,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatDialogModule,
     MatSelectModule,
     MatDividerModule,
+    MatSnackBarModule,
   ],
   exports: [
     MatCardModule,
@@ -33,6 +34,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatDialogModule,
     MatSelectModule,
     MatDividerModule,
+    MatSnackBarModule,
   ]
 })
 export class MaterialsModule { }
