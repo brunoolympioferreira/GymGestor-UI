@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Login } from './../../shared/models/login';
+import { AuthService } from './../../services/auth.service';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -11,6 +13,10 @@ import { UserRegisterDialogComponent } from '../user-register-dialog/user-regist
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  loginData: Login = {} as Login;
+  errorMessage: string = '';
+
+  private authService = inject(AuthService)
 
   constructor(
     private fb: FormBuilder,
@@ -25,8 +31,11 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log('Login realizado com sucesso!', this.loginForm.value);
-      localStorage.setItem('userToken', 'fake-jwt-token');
+      this.loginData = this.loginForm.value;
+      this.authService.login(this.loginData).subscribe({
+        next: () => this.router.navigate(['/dashboard']),
+        error: () => this.errorMessage = 'Credenciais inválidas, tente novamente.'
+      });
       this.router.navigate(['/dashboard']);
 
       this.loginForm.reset();
