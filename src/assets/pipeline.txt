@@ -1,2 +1,5 @@
 -> implementar autenticação do usuário
+ > Criar tela dashboard
+ > criar authGuard
+ > pensar numa maneira de manter o login ativo caso o token esteja válido (abrir tela de dash automaticamente)
 

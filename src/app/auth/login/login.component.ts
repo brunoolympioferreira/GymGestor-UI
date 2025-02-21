@@ -33,11 +33,16 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.loginData = this.loginForm.value;
       this.authService.login(this.loginData).subscribe({
-        next: () => this.router.navigate(['/dashboard']),
-        error: () => this.errorMessage = 'Credenciais inválidas, tente novamente.'
+        next: token => {
+          if (token) {
+            console.log('Login bem-sucedido! Token:', token);
+            this.router.navigate(['dashboard']);
+          }
+        },
+        error: err => {
+          this.errorMessage = err.message;
+        }
       });
-      this.router.navigate(['/dashboard']);
-
       this.loginForm.reset();
     }
   }

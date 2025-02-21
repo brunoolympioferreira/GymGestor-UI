@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { envinronment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, tap, take } from 'rxjs';
+import { Observable, tap, take, map, catchError, throwError } from 'rxjs';
 import { Login } from '../shared/models/login';
 
 @Injectable({
@@ -13,9 +13,19 @@ export class AuthService {
   private http = inject(HttpClient)
   private router = inject(Router);
 
-  login(credentials: Login): Observable<{ token: string }> {
-    return this.http.post<{ token: string }>(`${this.baseURL}/login`, credentials).pipe(
-      tap(response => this.saveToken(response.token))
+  login(credentials: Login): Observable<string> {
+    return this.http.post<{ token?: string }>(`${this.baseURL}/login`, credentials).pipe(
+      tap(response => {
+        if (!response?.token) {
+          throw new Error('Falha no login: Credenciais inválidas.');
+        }
+        this.saveToken(response.token);
+      }),
+      map(response => response.token as string),
+      catchError(error => {
+        console.error('Erro no login:', error);
+        return throwError(() => new Error('Falha ao realizar login. Verifique suas credenciais.'))
+      })
     );
   }
 

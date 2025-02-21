@@ -1,0 +1,1 @@
+ng g m pages/dashboard --route dashboard --module app -> Gera modulo, rota com lazy loading e componente
