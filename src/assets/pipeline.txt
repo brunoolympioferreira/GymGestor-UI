@@ -1,4 +1,3 @@
 -> implementar autenticação do usuário
-    > emitir erro para o usuário quando houver erro de credenciais
     > criar authGuard da tela dashboard
 
