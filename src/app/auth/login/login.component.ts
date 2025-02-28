@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { UserRegisterDialogComponent } from '../user-register-dialog/user-register-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,7 @@ export class LoginComponent {
     private fb: FormBuilder,
     private router: Router,
     private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -41,6 +43,7 @@ export class LoginComponent {
         },
         error: err => {
           this.errorMessage = err.message;
+          this.showErrorMessage();
         }
       });
       this.loginForm.reset();
@@ -57,5 +60,14 @@ export class LoginComponent {
         console.log('Usuário cadastrado com sucesso!', result);
       }
     });
+  }
+
+  showErrorMessage() {
+    this.snackBar.open('Login inválido! Por favor verifique suas credenciais.', 'Fechar', {
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: ['error-snackbar']
+    })
   }
 }

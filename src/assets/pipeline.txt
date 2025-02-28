@@ -1,5 +1,4 @@
 -> implementar autenticação do usuário
- > Criar tela dashboard
- > criar authGuard
- > pensar numa maneira de manter o login ativo caso o token esteja válido (abrir tela de dash automaticamente)
+    > emitir erro para o usuário quando houver erro de credenciais
+    > criar authGuard da tela dashboard
 
