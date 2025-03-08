@@ -1,6 +1,11 @@
-import { Component } from '@angular/core';
+import { Login } from './../../shared/models/login';
+import { AuthService } from './../../services/auth.service';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { UserRegisterDialogComponent } from '../user-register-dialog/user-register-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -9,8 +14,17 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  loginData: Login = {} as Login;
+  errorMessage: string = '';
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  private authService = inject(AuthService)
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -19,11 +33,41 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log('Login realizado com sucesso!', this.loginForm.value);
-      localStorage.setItem('userToken', 'fake-jwt-token');
-      this.router.navigate(['/dashboard']);
-
+      this.loginData = this.loginForm.value;
+      this.authService.login(this.loginData).subscribe({
+        next: token => {
+          if (token) {
+            console.log('Login bem-sucedido! Token:', token);
+            this.router.navigate(['dashboard']);
+          }
+        },
+        error: err => {
+          this.errorMessage = err.message;
+          this.showErrorMessage();
+        }
+      });
       this.loginForm.reset();
     }
+  }
+
+  openRegisterDialog() {
+    const dialogRef = this.dialog.open(UserRegisterDialogComponent, {
+      width: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log('Usuário cadastrado com sucesso!', result);
+      }
+    });
+  }
+
+  showErrorMessage() {
+    this.snackBar.open('Login inválido! Por favor verifique suas credenciais.', 'Fechar', {
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: ['error-snackbar']
+    })
   }
 }

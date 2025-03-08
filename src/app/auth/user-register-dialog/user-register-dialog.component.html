@@ -1,0 +1,38 @@
+<div class="dialog-container">
+    <h2>Cadastro de Usuário</h2>
+    <mat-divider></mat-divider>
+
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" required>
+            <mat-error *ngIf="userForm.get('email')?.invalid">
+                E-mail inválido
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Senha</mat-label>
+            <input matInput formControlName="password" type="password" required />
+            <mat-error *ngIf="userForm.get('password')?.invalid">
+                A senha deve conter pelo menos 6 caracteres
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Tipo de Usuário</mat-label>
+            <mat-select formControlName="role">
+                <mat-option *ngFor="let role of roles" [value]="role">
+                    {{role}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="button-container">
+            <button mat-button (click)="closeDialog()">Cancelar</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">
+                Cadastrar
+            </button>
+        </div>
+    </form>
+</div>

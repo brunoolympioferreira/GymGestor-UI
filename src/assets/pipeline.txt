@@ -1,0 +1,8 @@
+-> Criar Template da tela Dashboard
+ -> Template será dividido em 3 áreas: Menu Lateral, ToolBar, Conteúdo
+
+-> Criar Sessao Usuario
+ -> Editar Senha do Usuário (Todos)
+ -> Deletar Usuário (Admin)
+ -> Buscar usuário (Admin)
+ -> Buscar todos usuários (Admin)
