@@ -1,0 +1,52 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; // Altura fixa baseada em um monitor de 20"
+    background-color: #eff6fc; // Fundo gelo
+  }
+  
+  .toolbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background-color: #0078d4 !important; // Azul primário
+    color: white;
+  }
+  
+  .main-content {
+    display: flex;
+    flex-direction: row;
+    margin-top: 64px; // Compensa a altura da toolbar
+    height: calc(100vh - 64px); // Ajusta dinamicamente para a tela do usuário
+  }
+
+  .content {
+    width: calc(100% - 250px);
+    padding: 16px;
+    height: 100%;
+    //overflow-y: auto; // Para rolagem se necessário
+  }
+  
+  .sidenav {
+    width: 250px;
+    background-color: #2b88d8 !important;
+    padding-top: 16px;
+    height: 100%;
+  }
+
+  /* Força a cor branca nos links */
+  .sidenav a {
+    color: white !important;
+    text-decoration: none;
+  }
+
+  /* Ajusta os itens da lista */
+  .sidenav .mat-mdc-list-item-unscoped-content {
+    color: white !important;
+  }
+
+  /* Se houver outros spans internos aplicando a cor errada */
+  .sidenav span {
+    color: white !important;
+  }

@@ -1,1 +1,40 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+    <mat-toolbar color="primary" class="toolbar">
+        <span>GymGestor</span>
+    </mat-toolbar>
+
+    <div class="main-content">
+        <mat-sidenav class="sidenav" mode="side" opened>
+            <mat-nav-list>
+                <a mat-list-item routerLink="/home">Home</a>
+                <a mat-list-item routerLink="/members">Membros</a>
+                <a mat-list-item routerLink="/settings">Configurações</a>
+                <a mat-list-item routerLink="/home">Home</a>
+                <a mat-list-item routerLink="/members">Membros</a>
+                <a mat-list-item routerLink="/settings">Configurações</a>
+                <a mat-list-item routerLink="/home">Home</a>
+                <a mat-list-item routerLink="/members">Membros</a>
+                <a mat-list-item routerLink="/settings">Configurações</a>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <div class="content">
+            <router-outlet></router-outlet>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil nobis iusto error tempore sed non ducimus
+                consequatur amet maxime voluptate aliquid hic officiis neque eligendi asperiores ad, omnis cupiditate
+                provident?</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil nobis iusto error tempore sed non ducimus
+                consequatur amet maxime voluptate aliquid hic officiis neque eligendi asperiores ad, omnis cupiditate
+                provident?</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil nobis iusto error tempore sed non ducimus
+                consequatur amet maxime voluptate aliquid hic officiis neque eligendi asperiores ad, omnis cupiditate
+                provident?</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil nobis iusto error tempore sed non ducimus
+                consequatur amet maxime voluptate aliquid hic officiis neque eligendi asperiores ad, omnis cupiditate
+                provident?</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil nobis iusto error tempore sed non ducimus
+                consequatur amet maxime voluptate aliquid hic officiis neque eligendi asperiores ad, omnis cupiditate
+                provident?</p>
+        </div>
+    </div>
+</div>
