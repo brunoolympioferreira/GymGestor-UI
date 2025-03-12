@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     height: 100vh; // Altura fixa baseada em um monitor de 20"
-    background-color: #eff6fc; // Fundo gelo
+    background-color: var(--background-color) // Fundo gelo
   }
   
   .toolbar {
@@ -10,8 +10,10 @@
     position: fixed;
     top: 0;
     z-index: 1000;
-    background-color: #0078d4 !important; // Azul primário
+    background-color: var(--primary-color) !important;
     color: white;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); // Sombra para destacar a navbar
+    border-bottom: 2px solid var(--border-color);
   }
   
   .main-content {
@@ -23,16 +25,20 @@
 
   .content {
     width: calc(100% - 250px);
-    padding: 16px;
+    padding: 16px 16px 0 16px;
     height: 100%;
     //overflow-y: auto; // Para rolagem se necessário
+    background-color: var(--background-color);
+    border-left: 2px solid var(--border-color); // Borda para separar do menu lateral
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); // Sombra no lado esquerdo para destacar
   }
   
   .sidenav {
     width: 250px;
-    background-color: #2b88d8 !important;
+    background-color: var(--secondary-color) !important;
     padding-top: 16px;
     height: 100%;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); // Sombra na lateral para destacar o menu
   }
 
   /* Força a cor branca nos links */
