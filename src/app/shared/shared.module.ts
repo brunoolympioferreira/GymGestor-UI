@@ -11,6 +11,7 @@ import { MaterialsModule } from './materials/materials.module';
     MaterialsModule,
   ],
   exports: [
+    CommonModule,
     MaterialsModule,
   ]
 })

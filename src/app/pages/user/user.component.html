@@ -1,1 +1,15 @@
-<p>user works!</p>
+<div class="user-container">
+    <h2>Dados do Usuário</h2>
+    <form *ngIf="user">
+        <label>Email:</label>
+        <input type="text" [value]="user.email" disabled />
+
+        <label>Role:</label>
+        <input type="text" [value]="user.role" disabled />
+
+        <button mat-button color="primary">Editar Senha</button>
+        <button *ngIf="user.role === 'Admin'" mat-button color="accent">
+            Listar Usuários
+        </button>
+    </form>
+</div>

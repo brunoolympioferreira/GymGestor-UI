@@ -1,7 +1,7 @@
 import { User } from './../shared/models/user';
 import { inject, Injectable } from '@angular/core';
 import { envinronment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, take } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
@@ -21,11 +21,20 @@ export class UserService {
     const userId = this.getUserIdFromToken();
     if (!userId) throw new Error('Usuário não autenticado');
 
-    return this.http.get<User>(`${this.baseURL}/${userId}`);
+    return this.http.get<User>(`${this.baseURL}/${userId}`, {
+      headers: this.getAuthHeaders(),
+    });
+  }
+
+  private getAuthHeaders(): HttpHeaders {
+    const token = localStorage.getItem('userToken');
+    return new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
   }
 
   private getUserIdFromToken(): string | null {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('userToken');
     if (!token) return null;
 
     const decodedToken = this.jwtHelper.decodeToken(token);
