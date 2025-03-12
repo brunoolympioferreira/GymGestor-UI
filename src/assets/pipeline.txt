@@ -1,7 +1,5 @@
--> Criar Template da tela Dashboard
- -> Template será dividido em 3 áreas: Menu Lateral, ToolBar, Conteúdo
-
--> Criar Sessao Usuario
+-> Criar Sessao Usuario no menu superior lado direito (icone usuario)
+ -> Acionar o nome deste usuário ao lado do icone
  -> Editar Senha do Usuário (Todos)
  -> Deletar Usuário (Admin)
  -> Buscar usuário (Admin)

@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,4 +9,9 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class DashboardComponent {
 
+  private router = inject(Router);
+
+  navigateToUser() {
+    this.router.navigate(['/dashboard/user']);
+  }
 }

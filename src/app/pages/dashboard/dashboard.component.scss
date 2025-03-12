@@ -56,3 +56,17 @@
   .sidenav span {
     color: white !important;
   }
+
+  .logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .user-icon {
+    margin-left: auto;
+    color: white;
+
+    mat-icon {
+      font-size: 26px;
+    }
+  }

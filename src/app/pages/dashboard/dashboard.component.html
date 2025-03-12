@@ -1,6 +1,9 @@
 <div class="dashboard-container">
     <mat-toolbar color="primary" class="toolbar">
-        <span>GymGestor</span>
+        <span class="logo">GymGestor</span>
+        <button mat-icon-button class="user-icon" (click)="navigateToUser()">
+            <mat-icon>account_circle</mat-icon>
+        </button>
     </mat-toolbar>
 
     <div class="main-content">
@@ -14,15 +17,6 @@
 
         <div class="content">
             <router-outlet></router-outlet>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil nobis iusto error tempore sed non ducimus
-                consequatur amet maxime voluptate aliquid hic officiis neque eligendi asperiores ad, omnis cupiditate
-                provident?</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil nobis iusto error tempore sed non ducimus
-                consequatur amet maxime voluptate aliquid hic officiis neque eligendi asperiores ad, omnis cupiditate
-                provident?</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil nobis iusto error tempore sed non ducimus
-                consequatur amet maxime voluptate aliquid hic officiis neque eligendi asperiores ad, omnis cupiditate
-                provident?</p>
         </div>
     </div>
 </div>
