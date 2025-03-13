@@ -1,0 +1,108 @@
+// Container principal
+.user-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  // Título
+  .user-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--button-primary-color);
+    margin-bottom: 20px;
+  }
+  
+  // Formulário
+  .user-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+  
+    label {
+      font-weight: 600;
+      color: var(--button-secondary-color);
+      min-width: 100px; // Tamanho fixo para alinhar os labels corretamente
+      text-align: right; // Garante alinhamento visual uniforme
+      display: inline-block; // Mantém o layout consistente
+    }
+  
+    input {
+      width: 100%;
+      max-width: 400px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: border 0.3s;
+  
+      &:focus {
+        border-color: var(--button-primary-color);
+        outline: none;
+      }
+    }
+  }
+  
+  // Botões
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s;
+  
+      &.edit-btn {
+        background: var(--button-primary-color);
+        color: white;
+  
+        &:hover {
+          background: darken(#318CE7, 10%);
+        }
+      }
+  
+      &.admin-btn {
+        background: var(--button-secondary-color);
+        color: white;
+  
+        &:hover {
+          background: lighten(#424242, 10%);
+        }
+      }
+    }
+  }
+  
+  // Responsividade
+  @media (max-width: 480px) {
+    .user-container {
+      width: 90%;
+    }
+  
+    .button-group {
+      flex-direction: column;
+      gap: 10px;
+  
+      button {
+        width: 100%;
+      }
+    }
+  }

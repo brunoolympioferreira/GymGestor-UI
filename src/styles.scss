@@ -5,6 +5,10 @@ $secondary-color: #4a9ae9;
 $background-color: #eff6fc;
 $text-color: #333;
 $border-color: #1565C0;
+$button-primary-color:#318CE7;
+$button-secondary-color: #424242;
+$container-background-color: #f4f4f4;
+$field-text-color: #333;
 
 :root {
   --primary-color: #{$primary-color};
@@ -12,6 +16,10 @@ $border-color: #1565C0;
   --background-color: #{$background-color};
   --text-color: #{$text-color};
   --border-color: #{$border-color};
+  --button-primary-color: #{$button-primary-color};
+  --button-secondary-color: #{$button-secondary-color};
+  --container-background-color: #{$container-background-color};
+  --field-text-color: #{$field-text-color};
 }
 
 html, body { height: 100%; overflow: hidden; }

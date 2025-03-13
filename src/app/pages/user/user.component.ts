@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { User } from '../../shared/models/user';
 import { UserService } from '../../services/user.service';
 
@@ -9,6 +9,7 @@ import { UserService } from '../../services/user.service';
 })
 export class UserComponent implements OnInit {
   user: User = {} as User;
+  @Output() userNameEmitter = new EventEmitter<string>();
 
   userService = inject(UserService);
 
@@ -19,6 +20,7 @@ export class UserComponent implements OnInit {
   private loadUser(): void {
     this.userService.getAuthenticatedUser().subscribe((data) => {
       this.user = data;
+      this.userNameEmitter.emit(data.email)
     });
   }
 }

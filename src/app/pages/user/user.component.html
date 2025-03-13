@@ -1,15 +1,23 @@
 <div class="user-container">
-    <h2>Dados do Usuário</h2>
-    <form *ngIf="user">
-        <label>Email:</label>
-        <input type="text" [value]="user.email" disabled />
+    <h2 class="user-title">Perfil do Usuário</h2>
 
-        <label>Role:</label>
-        <input type="text" [value]="user.role" disabled />
+    <form class="user-form" *ngIf="user">
+        <div>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" [value]="user.email" readonly />
+        </div>
 
-        <button mat-button color="primary">Editar Senha</button>
-        <button *ngIf="user.role === 'Admin'" mat-button color="accent">
-            Listar Usuários
-        </button>
+        <div>
+            <label for="role">Função:</label>
+            <input type="text" id="role" [value]="user.role" readonly />
+        </div>
+
+        <div class="button-group">
+            <button class="edit-btn" type="button">Editar Senha</button>
+
+            <button *ngIf="user.role === 'Admin'" class="admin-btn" type="button">
+                Gerenciar Usuários
+            </button>
+        </div>
     </form>
 </div>

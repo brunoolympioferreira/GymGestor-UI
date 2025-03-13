@@ -4,3 +4,4 @@
  -> Deletar Usuário (Admin)
  -> Buscar usuário (Admin)
  -> Buscar todos usuários (Admin)
+ -> Criar Logoff do usuario

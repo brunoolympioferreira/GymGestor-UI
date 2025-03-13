@@ -9,9 +9,15 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent {
 
+  email: string = '';
+
   private router = inject(Router);
 
   navigateToUser() {
     this.router.navigate(['/dashboard/user']);
+  }
+
+  setEmail(email: string) {
+    this.email = email;
   }
 }
