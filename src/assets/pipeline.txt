@@ -1,7 +1,6 @@
 -> Criar Sessao Usuario no menu superior lado direito (icone usuario)
- -> Acionar o nome deste usuário ao lado do icone
+ -> Criar Logoff do usuario
  -> Editar Senha do Usuário (Todos)
  -> Deletar Usuário (Admin)
  -> Buscar usuário (Admin)
  -> Buscar todos usuários (Admin)
- -> Criar Logoff do usuario
