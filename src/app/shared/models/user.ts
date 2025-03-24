@@ -4,4 +4,8 @@ export interface User {
     role: Role;
 }
 
-export type Role = 'Admin' | 'User';
+export interface UpdateUser {
+    password: string;
+}
+
+export type Role = 'Admin' | 'User' | '';

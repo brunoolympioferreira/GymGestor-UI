@@ -1,4 +1,4 @@
-import { User } from './../shared/models/user';
+import { UpdateUser, User } from './../shared/models/user';
 import { inject, Injectable } from '@angular/core';
 import { envinronment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -17,6 +17,12 @@ export class UserService {
     return this.http.post<User>(`${this.baseURL}`, user).pipe(take(1));
   }
 
+  changePassword(user: UpdateUser): Observable<UpdateUser> {
+    const userId = this.getUserIdFromToken();
+    return this.http.put<UpdateUser>(`${this.baseURL}/${userId}`, user,
+      { headers: this.getAuthHeaders() }).pipe(take(1));
+  }
+
   getAuthenticatedUser(): Observable<User> {
     const userId = this.getUserIdFromToken();
     if (!userId) throw new Error('Usuário não autenticado');
@@ -25,7 +31,6 @@ export class UserService {
       headers: this.getAuthHeaders(),
     });
   }
-
   private getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('userToken');
     return new HttpHeaders({
