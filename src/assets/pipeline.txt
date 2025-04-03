@@ -1,5 +1,4 @@
 -> Criar Sessao Usuario no menu superior lado direito (icone usuario)
- -> Editar Senha do Usuário (Todos)
  -> Deletar Usuário (Admin)
  -> Buscar usuário (Admin)
- -> Buscar todos usuários (Admin)
+ -> Listar todos usuários (Admin)

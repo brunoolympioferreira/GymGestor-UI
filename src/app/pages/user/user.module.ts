@@ -5,12 +5,14 @@ import { UserComponent } from './user.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ChangePasswordDialogComponent } from './change-password-dialog/change-password-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { UserListComponent } from './user-list/user-list.component';
 
 
 @NgModule({
   declarations: [
     UserComponent,
-    ChangePasswordDialogComponent
+    ChangePasswordDialogComponent,
+    UserListComponent
   ],
   imports: [
     UserRoutingModule,

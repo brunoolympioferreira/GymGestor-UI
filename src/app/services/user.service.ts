@@ -31,6 +31,11 @@ export class UserService {
       headers: this.getAuthHeaders(),
     });
   }
+
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.baseURL}`, { headers: this.getAuthHeaders() }).pipe(take(1));
+  }
+
   private getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('userToken');
     return new HttpHeaders({
