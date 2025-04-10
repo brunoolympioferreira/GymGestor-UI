@@ -1,4 +1,4 @@
-import { UpdateUser, User } from './../shared/models/user';
+import { UpdateUser, User, UserDetail } from './../shared/models/user';
 import { inject, Injectable } from '@angular/core';
 import { envinronment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -36,8 +36,8 @@ export class UserService {
     return this.http.get<User[]>(`${this.baseURL}`, { headers: this.getAuthHeaders() }).pipe(take(1));
   }
 
-  getUserById(id: string): Observable<User> {
-    return this.http.get<User>(`${this.baseURL}/${id}`, { headers: this.getAuthHeaders() }).pipe(take(1));
+  getUserById(id: string): Observable<UserDetail> {
+    return this.http.get<UserDetail>(`${this.baseURL}/${id}`, { headers: this.getAuthHeaders() }).pipe(take(1));
   }
 
   private getAuthHeaders(): HttpHeaders {
