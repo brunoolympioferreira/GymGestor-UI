@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { User } from '../../../shared/models/user';
+import { User, UserDetail } from '../../../shared/models/user';
 import { UserService } from '../../../services/user.service';
 import { catchError, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
@@ -38,8 +38,8 @@ export class UserListComponent implements OnInit {
     console.log('Deletar usuário', user);
   }
 
-  viewDetails(user: User): void {
-    console.log('Detalhes do usuário', user);
+  viewDetails(user: UserDetail): void {
+    this.router.navigate([`/dashboard/user/${user.id}`]);
   }
 
   goToUserPage() {
