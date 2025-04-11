@@ -40,6 +40,10 @@ export class UserService {
     return this.http.get<UserDetail>(`${this.baseURL}/${id}`, { headers: this.getAuthHeaders() }).pipe(take(1));
   }
 
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseURL}/${id}`, { headers: this.getAuthHeaders() }).pipe(take(1));
+  }
+
   private getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('userToken');
     return new HttpHeaders({
