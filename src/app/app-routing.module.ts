@@ -10,6 +10,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule),
     canActivate: [authGuard]
   },
+  {
+    path: 'members', loadChildren: () => import('./pages/member/member.module').then(m => m.MemberModule),
+    canActivate: [authGuard]
+  },
   { path: '**', redirectTo: 'auth/login' }
 ];
 
