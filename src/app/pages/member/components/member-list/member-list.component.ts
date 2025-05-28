@@ -1,5 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Member } from '../../../../shared/models/member';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateMemberFormComponent } from '../create-member-form/create-member-form.component';
+import { MemberService } from '../../../../services/member.service';
 
 @Component({
   selector: 'app-member-list',
@@ -11,6 +14,9 @@ export class MemberListComponent {
 
   @Output() view = new EventEmitter<string>();
   @Output() edit = new EventEmitter<string>();
+
+  dialog = inject(MatDialog);
+  memberService = inject(MemberService);
 
   displayedColumns: string[] = ['fullName', 'cpf', 'email', 'phone', 'actions'];
 
@@ -34,4 +40,22 @@ export class MemberListComponent {
     this.filter = { id: '', fullName: '', cpf: '', email: '' };
   }
 
+  openNewMemberDialog(): void {
+    const dialogRef = this.dialog.open(CreateMemberFormComponent, {
+      width: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.loadMembers();
+        console.log('Membro cadastrado com sucesso!', result);
+      }
+    });
+  }
+
+  loadMembers(): void {
+    this.memberService.getAll().subscribe((members) => {
+      this.members = members;
+    });
+  }
 }
