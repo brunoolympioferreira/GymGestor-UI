@@ -33,6 +33,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatListModule,
     MatTableModule,
     MatTooltipModule,
+    MatTableModule,
   ],
   exports: [
     MatCardModule,
@@ -48,7 +49,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatToolbarModule,
     MatListModule,
     MatTableModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatTableModule
   ]
 })
 export class MaterialsModule { }

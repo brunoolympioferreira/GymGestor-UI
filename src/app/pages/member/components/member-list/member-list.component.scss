@@ -1,0 +1,62 @@
+.member-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: flex-end;
+
+    mat-form-field {
+      flex: 1 1 200px;
+    }
+
+    .filter-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .no-results {
+    padding: 1rem;
+    color: #666;
+    font-style: italic;
+  }
+
+  table {
+    width: 100%;
+
+    th.mat-header-cell {
+      font-weight: bold;
+    }
+
+    td.mat-cell, th.mat-header-cell {
+      padding: 1rem;
+    }
+
+    td.mat-cell {
+      vertical-align: top;
+    }
+
+    mat-icon {
+      vertical-align: middle;
+    }
+  }
+  .member-filter{
+    padding: 10px;
+  }
+  .add-member-button {
+    margin-top: 16px;
+    display: flex;
+    justify-content: flex-start;
+}
+}
