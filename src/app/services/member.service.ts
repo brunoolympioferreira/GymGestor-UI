@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { envinronment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, take } from 'rxjs';
+import { Observable, take, tap, delay } from 'rxjs';
 import { Member } from '../shared/models/member';
 
 @Injectable({
@@ -11,9 +11,13 @@ import { Member } from '../shared/models/member';
 export class MemberService {
   private baseURL = `${envinronment.apiURL}/members`;
   private http = inject(HttpClient)
+
   getAll(): Observable<Member[]> {
     return this.http.get<Member[]>(this.baseURL,
-      { headers: this.getAuthHeaders() }).pipe(take(1));
+      { headers: this.getAuthHeaders() }).pipe(
+        take(1),
+        delay(300)
+      );
   }
 
   private getAuthHeaders(): HttpHeaders {
@@ -23,4 +27,11 @@ export class MemberService {
     });
   }
 
+  create(member: Member): Observable<Member> {
+    return this.http.post<Member>(this.baseURL, member, { headers: this.getAuthHeaders() })
+      .pipe(
+        take(1),
+        delay(500)
+      );
+  }
 }

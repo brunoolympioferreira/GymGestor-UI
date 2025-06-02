@@ -1,2 +1,3 @@
-<app-member-list [members]="members" (view)="handleView($event)" (edit)="handleEdit($event)">
+<app-member-list [members]="members" (view)="handleView($event)" (edit)="handleEdit($event)"
+    (memberCreated)="onMemberCreated()">
 </app-member-list>
