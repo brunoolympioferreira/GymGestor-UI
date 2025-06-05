@@ -32,17 +32,31 @@
 
     <mat-form-field class="w-full mb-4" appearance="fill">
         <mat-label>CPF</mat-label>
-        <input matInput formControlName="cpf" />
+        <input matInput formControlName="cpf" mask="000.000.000-00" placeholder="000.000.000-00"
+            [dropSpecialCharacters]="false" />
+        <mat-error *ngIf="form.get('cpf')?.errors?.['required']">
+            CPF é obrigatório
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="w-full mb-4" appearance="fill">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" />
+        <mat-error *ngIf="form.get('email')?.errors?.['required']">
+            Email é obrigatório
+        </mat-error>
+        <mat-error *ngIf="form.get('email')?.errors?.['email']">
+            Email inválido
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="w-full mb-4" appearance="fill">
         <mat-label>Telefone</mat-label>
-        <input matInput formControlName="phone" />
+        <input matInput formControlName="phone" mask="(00) - 00000-0000" placeholder="(00)-00000-0000"
+            [dropSpecialCharacters]="true" />
+        <mat-error *ngIf="form.get('phone')?.errors?.['required']">
+            Telefone é obrigatório
+        </mat-error>
     </mat-form-field>
 
     <!-- Endereço -->

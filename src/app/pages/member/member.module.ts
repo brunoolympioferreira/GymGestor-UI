@@ -8,6 +8,7 @@ import { MemberListComponent } from './components/member-list/member-list.compon
 import { SharedModule } from '../../shared/shared.module';
 import { CreateMemberFormComponent } from './components/create-member-form/create-member-form.component';
 
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { CreateMemberFormComponent } from './components/create-member-form/creat
     MemberRoutingModule,
     FormsModule,
     SharedModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    NgxMaskDirective
+  ],
+  providers: [provideNgxMask()]
 })
 export class MemberModule { }
