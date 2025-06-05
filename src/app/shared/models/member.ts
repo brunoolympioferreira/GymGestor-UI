@@ -12,4 +12,4 @@ export interface Member {
     photoUrl: string;
 }
 
-export type Gender = 'male' | 'female';
+export type Gender = 'male' | 'female' | 'other';
