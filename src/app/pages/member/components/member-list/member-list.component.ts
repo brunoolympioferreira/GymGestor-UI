@@ -3,6 +3,7 @@ import { Member } from '../../../../shared/models/member';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateMemberFormComponent } from '../create-member-form/create-member-form.component';
 import { MemberService } from '../../../../services/member.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-member-list',
@@ -18,6 +19,7 @@ export class MemberListComponent implements OnInit {
 
   dialog = inject(MatDialog);
   memberService = inject(MemberService);
+  router = inject(Router);
 
   displayedColumns: string[] = ['fullName', 'cpf', 'email', 'phone', 'actions'];
 
@@ -60,5 +62,9 @@ export class MemberListComponent implements OnInit {
     this.memberService.getAll().subscribe((members) => {
       this.members = members;
     });
+  }
+
+  viewDetails(member: Member): void {
+    this.router.navigate([`/dashboard/members/${member.id}`]);
   }
 }

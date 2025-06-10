@@ -9,12 +9,14 @@ import { SharedModule } from '../../shared/shared.module';
 import { CreateMemberFormComponent } from './components/create-member-form/create-member-form.component';
 
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { MemberDetailComponent } from './components/member-detail/member-detail.component';
 
 @NgModule({
   declarations: [
     MemberComponent,
     MemberListComponent,
-    CreateMemberFormComponent
+    CreateMemberFormComponent,
+    MemberDetailComponent,
   ],
   imports: [
     CommonModule,

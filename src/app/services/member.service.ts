@@ -15,8 +15,14 @@ export class MemberService {
   getAll(): Observable<Member[]> {
     return this.http.get<Member[]>(this.baseURL,
       { headers: this.getAuthHeaders() }).pipe(
-        take(1),
-        delay(300)
+        take(1)
+      );
+  }
+
+  getById(id: string): Observable<Member> {
+    return this.http.get<Member>(`${this.baseURL}/${id}`, { headers: this.getAuthHeaders() })
+      .pipe(
+        take(1)
       );
   }
 
@@ -30,8 +36,7 @@ export class MemberService {
   create(member: Member): Observable<Member> {
     return this.http.post<Member>(this.baseURL, member, { headers: this.getAuthHeaders() })
       .pipe(
-        take(1),
-        delay(500)
+        take(1)
       );
   }
 }
