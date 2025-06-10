@@ -64,26 +64,36 @@
         <mat-form-field class="w-full mb-4" appearance="fill">
             <mat-label>Rua</mat-label>
             <input matInput formControlName="street" />
+            <mat-error *ngIf="form.get('street')?.errors?.['required']"></mat-error>
         </mat-form-field>
 
         <mat-form-field class="w-full mb-4" appearance="fill">
             <mat-label>Número</mat-label>
             <input matInput formControlName="number" />
+            <mat-error *ngIf="form.get('number')?.errors?.['required']"></mat-error>
         </mat-form-field>
 
         <mat-form-field class="w-full mb-4" appearance="fill">
             <mat-label>Cidade</mat-label>
             <input matInput formControlName="city" />
+            <mat-error *ngIf="form.get('city')?.errors?.['required']"></mat-error>
         </mat-form-field>
 
         <mat-form-field class="w-full mb-4" appearance="fill">
             <mat-label>Estado</mat-label>
-            <input matInput formControlName="state" />
+            <mat-select formControlName="state">
+                <mat-option *ngFor="let estado of estados" [value]="estado">
+                    {{ estado }}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('state')?.errors?.['required']"></mat-error>
         </mat-form-field>
 
         <mat-form-field class="w-full mb-4" appearance="fill">
             <mat-label>CEP</mat-label>
-            <input matInput formControlName="zipCode" />
+            <input matInput formControlName="zipCode" mask="00000-000" placeholder="00000-000"
+                [dropSpecialCharacters]="false" />
+            <mat-error *ngIf="form.get('zipCode')?.errors?.['required']"></mat-error>
         </mat-form-field>
     </div>
 
