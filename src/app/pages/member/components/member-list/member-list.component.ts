@@ -60,7 +60,7 @@ export class MemberListComponent implements OnInit {
 
   loadMembers(): void {
     this.memberService.getAll().subscribe((members) => {
-      this.members = members;
+      this.members = members.sort((a, b) => b.fullName.localeCompare(a.fullName));
     });
   }
 

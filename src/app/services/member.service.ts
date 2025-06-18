@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, take, tap, delay } from 'rxjs';
 import { Member } from '../shared/models/member';
+import { MemberDetailViewModel } from '../shared/viewModels/memberDetailViewModel';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,8 @@ export class MemberService {
       );
   }
 
-  getById(id: string): Observable<Member> {
-    return this.http.get<Member>(`${this.baseURL}/${id}`, { headers: this.getAuthHeaders() })
+  getById(id: string): Observable<MemberDetailViewModel> {
+    return this.http.get<MemberDetailViewModel>(`${this.baseURL}/${id}`, { headers: this.getAuthHeaders() })
       .pipe(
         take(1)
       );

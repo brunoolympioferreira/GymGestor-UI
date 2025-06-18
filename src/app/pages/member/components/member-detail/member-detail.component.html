@@ -1,1 +1,74 @@
-<p>member-detail works!</p>
+<div class="member-details-wrapper" *ngIf="member">
+    <mat-card class="profile-card">
+        <mat-card-header>
+            <!-- <div mat-card-avatar class="avatar">
+                <img *ngIf="member.photoUrl" [src]="member.photoUrl" alt="Foto do Membro" />
+                <mat-icon *ngIf="!member.photoUrl">person</mat-icon>
+            </div> -->
+            <mat-card-title>{{ member.fullName }}</mat-card-title>
+            <mat-card-subtitle>
+                {{ member.gender | genderLabel }} • {{ member.dateOfBirth | date:'longDate' }}
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-divider></mat-divider>
+            <div class="info">
+                <span>CPF: </span>
+                <span>{{ member.cpf }}</span>
+            </div>
+            <div class="info">
+                <span>Email: </span>
+                <span>{{ member.email }}</span>
+            </div>
+            <div class="info">
+                <span>Telefone: </span>
+                <span>{{ member.phone }}</span>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="address-card">
+        <mat-card-title>Endereço</mat-card-title>
+        <mat-card-content>
+            <p>{{ member.address.street }}, {{ member.address.number }}</p>
+            <p>{{ member.address.city }} - {{ member.address.state }}</p>
+            <p>CEP: {{ member.address.zipCode }}</p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="section-card" *ngIf="member.healthRecord?.length">
+        <mat-card-title>Prontuário de Saúde</mat-card-title>
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item *ngFor="let record of member.healthRecord">
+                    <div matLine>
+                        <strong>{{ record.condition }}</strong> — {{ record.recordDate | date }}
+                    </div>
+                    <div matLine class="notes">{{ record.notes }}</div>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="section-card" *ngIf="member.contract?.length">
+        <mat-card-title>Contratos</mat-card-title>
+        <mat-card-content>
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let contract of member.contract">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>{{ contract.planName }}</mat-panel-title>
+                        <mat-panel-description>
+                            R$ {{ contract.price | number: '1.2-2' }}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>Período: {{ contract.startDate | date }} a {{ contract.endDate | date }}</p>
+                    <p>Renovação:
+                        <mat-chip color="{{ contract.isAutoRenew ? 'primary' : 'warn' }}" selected>
+                            {{ contract.isAutoRenew ? 'Automática' : 'Manual' }}
+                        </mat-chip>
+                    </p>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-card-content>
+    </mat-card>
+</div>

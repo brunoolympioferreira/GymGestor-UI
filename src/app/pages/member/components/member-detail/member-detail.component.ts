@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Member } from '../../../../shared/models/member';
 import { MemberService } from '../../../../services/member.service';
 import { ActivatedRoute } from '@angular/router';
+import { MemberDetailViewModel } from '../../../../shared/viewModels/memberDetailViewModel';
 
 @Component({
   selector: 'app-member-detail',
@@ -9,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './member-detail.component.scss'
 })
 export class MemberDetailComponent implements OnInit {
-  member: Member = {} as Member;
+  member: MemberDetailViewModel = {} as MemberDetailViewModel;
   memberService = inject(MemberService);
   route = inject(ActivatedRoute);
 
