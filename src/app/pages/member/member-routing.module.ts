@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MemberComponent } from './member.component';
 import { MemberDetailComponent } from './components/member-detail/member-detail.component';
+import { MemberUpdateComponent } from './components/member-update/member-update.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,9 @@ const routes: Routes = [
   },
   {
     path: ':id', component: MemberDetailComponent
+  },
+  {
+    path: ':id/edit', component: MemberUpdateComponent
   }
 ];
 

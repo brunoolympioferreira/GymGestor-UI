@@ -1,3 +1,4 @@
+import { MemberUpdateComponent } from './../member-update/member-update.component';
 import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { Member } from '../../../../shared/models/member';
 import { MatDialog } from '@angular/material/dialog';
@@ -66,5 +67,23 @@ export class MemberListComponent implements OnInit {
 
   viewDetails(member: Member): void {
     this.router.navigate([`/dashboard/members/${member.id}`]);
+  }
+
+  editMember(member: Member): void {
+    this.router.navigate([`/dashboard/members/${member.id}/edit`]);
+  }
+
+  openEditDialog(memberId: string): void {
+    const dialogRef = this.dialog.open(MemberUpdateComponent, {
+      width: '600px',
+      disableClose: false,
+      data: { id: memberId }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loadMembers();
+      }
+    });
   }
 }

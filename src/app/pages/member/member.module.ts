@@ -10,6 +10,7 @@ import { CreateMemberFormComponent } from './components/create-member-form/creat
 
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { MemberDetailComponent } from './components/member-detail/member-detail.component';
+import { MemberUpdateComponent } from './components/member-update/member-update.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { MemberDetailComponent } from './components/member-detail/member-detail.
     MemberListComponent,
     CreateMemberFormComponent,
     MemberDetailComponent,
+    MemberUpdateComponent,
   ],
   imports: [
     CommonModule,

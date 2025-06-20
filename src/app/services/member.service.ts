@@ -27,6 +27,13 @@ export class MemberService {
       );
   }
 
+  updateMember(id: string, member: Member): Observable<Member> {
+    return this.http.put<Member>(`${this.baseURL}/${id}`, member, { headers: this.getAuthHeaders() })
+      .pipe(
+        take(1)
+      );
+  }
+
   private getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('userToken');
     return new HttpHeaders({
