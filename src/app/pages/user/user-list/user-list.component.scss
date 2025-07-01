@@ -1,0 +1,17 @@
+.user-list-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 16px;
+  
+    table {
+      width: 100%;
+    }
+  
+    mat-icon-button {
+      margin: 0 4px;
+    }
+  }
+
+  .back-button {
+    margin-top: 20px;
+  }

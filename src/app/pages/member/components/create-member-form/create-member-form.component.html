@@ -1,0 +1,111 @@
+<h2 mat-dialog-title>Novo Membro</h2>
+<mat-dialog-content [formGroup]="form">
+    <mat-form-field class="w-full mb-4" appearance="fill">
+        <mat-label>Nome Completo</mat-label>
+        <input matInput formControlName="fullName" />
+        <mat-error *ngIf="form.get('fullName')?.errors?.['required']">
+            Nome completo é obrigatório
+        </mat-error>
+        <mat-error *ngIf="form.get('fullName')?.errors?.['maxlength']">
+            Nome completo deve ter no máximo 150 caracteres
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-full mb-4" appearance="fill">
+        <mat-label>Data de Nascimento</mat-label>
+        <input matInput formControlName="dateOfBirth" [matDatepicker]="picker">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.get('dateOfBirth')?.errors?.['required']">
+            Data de nascimento é obrigatória
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-full mb-4" appearance="fill">
+        <mat-label>Gênero</mat-label>
+        <mat-select formControlName="gender">
+            <mat-option value="male">Masculino</mat-option>
+            <mat-option value="female">Feminino</mat-option>
+            <mat-option value="other">Outro</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="w-full mb-4" appearance="fill">
+        <mat-label>CPF</mat-label>
+        <input matInput formControlName="cpf" mask="000.000.000-00" placeholder="000.000.000-00"
+            [dropSpecialCharacters]="false" />
+        <mat-error *ngIf="form.get('cpf')?.errors?.['required']">
+            CPF é obrigatório
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-full mb-4" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+        <mat-error *ngIf="form.get('email')?.errors?.['required']">
+            Email é obrigatório
+        </mat-error>
+        <mat-error *ngIf="form.get('email')?.errors?.['email']">
+            Email inválido
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-full mb-4" appearance="fill">
+        <mat-label>Telefone</mat-label>
+        <input matInput formControlName="phone" mask="(00) - 00000-0000" placeholder="(00)-00000-0000"
+            [dropSpecialCharacters]="true" />
+        <mat-error *ngIf="form.get('phone')?.errors?.['required']">
+            Telefone é obrigatório
+        </mat-error>
+    </mat-form-field>
+
+    <!-- Endereço -->
+    <div formGroupName="address">
+        <mat-form-field class="w-full mb-4" appearance="fill">
+            <mat-label>Rua</mat-label>
+            <input matInput formControlName="street" />
+            <mat-error *ngIf="form.get('street')?.errors?.['required']"></mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-full mb-4" appearance="fill">
+            <mat-label>Número</mat-label>
+            <input matInput formControlName="number" />
+            <mat-error *ngIf="form.get('number')?.errors?.['required']"></mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-full mb-4" appearance="fill">
+            <mat-label>Cidade</mat-label>
+            <input matInput formControlName="city" />
+            <mat-error *ngIf="form.get('city')?.errors?.['required']"></mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-full mb-4" appearance="fill">
+            <mat-label>Estado</mat-label>
+            <mat-select formControlName="state">
+                <mat-option *ngFor="let estado of estados" [value]="estado">
+                    {{ estado }}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('state')?.errors?.['required']"></mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-full mb-4" appearance="fill">
+            <mat-label>CEP</mat-label>
+            <input matInput formControlName="zipCode" mask="00000-000" placeholder="00000-000"
+                [dropSpecialCharacters]="false" />
+            <mat-error *ngIf="form.get('zipCode')?.errors?.['required']"></mat-error>
+        </mat-form-field>
+    </div>
+
+    <mat-form-field class="w-full mb-4" appearance="fill">
+        <mat-label>URL da Foto</mat-label>
+        <input matInput formControlName="photoUrl" />
+    </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button mat-flat-button color="primary" [disabled]="form.invalid" (click)="onSubmit()">
+        Salvar
+    </button>
+</mat-dialog-actions>

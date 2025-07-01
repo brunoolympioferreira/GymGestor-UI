@@ -1,0 +1,28 @@
+<div class="dashboard-container">
+    <mat-toolbar color="primary" class="toolbar">
+        <span class="logo" routerLink="/dashboard" style="cursor: pointer;">GymGestor</span>
+        <div class="toolbar-actions">
+            <button mat-button class="logout-button" (click)="logout()">
+                <mat-icon>exit_to_app</mat-icon>
+                Sair
+            </button>
+            <button mat-icon-button class="user-icon" (click)="navigateToUser()">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+        </div>
+    </mat-toolbar>
+
+    <div class="main-content">
+        <mat-sidenav class="sidenav" mode="side" opened>
+            <mat-nav-list>
+                <a mat-list-item routerLink="/home">Home</a>
+                <a mat-list-item routerLink="members">Membros</a>
+                <a mat-list-item routerLink="/settings">Configurações</a>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+
+$primary-color: #318CE7;
+$secondary-color: #4a9ae9;
+$background-color: #eff6fc;
+$text-color: #333;
+$border-color: #1565C0;
+$button-primary-color:#318CE7;
+$button-secondary-color: #424242;
+$container-background-color: #f4f4f4;
+$field-text-color: #333;
+
+:root {
+  --primary-color: #{$primary-color};
+  --secondary-color: #{$secondary-color};
+  --background-color: #{$background-color};
+  --text-color: #{$text-color};
+  --border-color: #{$border-color};
+  --button-primary-color: #{$button-primary-color};
+  --button-secondary-color: #{$button-secondary-color};
+  --container-background-color: #{$container-background-color};
+  --field-text-color: #{$field-text-color};
+}
+
+html, body { height: 100%; overflow: hidden; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.success-snackbar {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+  }
+  
+.error-snackbar {
+    background-color: #d32f2f; /* Vermelho */
+    color: white;
+    font-weight: bold;
+}
