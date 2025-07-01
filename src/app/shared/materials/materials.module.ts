@@ -15,6 +15,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatChipsModule } from '@angular/material/chips';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -33,6 +38,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatListModule,
     MatTableModule,
     MatTooltipModule,
+    MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatExpansionModule,
+    MatChipsModule
   ],
   exports: [
     MatCardModule,
@@ -48,7 +58,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatToolbarModule,
     MatListModule,
     MatTableModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatExpansionModule,
+    MatChipsModule
   ]
 })
 export class MaterialsModule { }

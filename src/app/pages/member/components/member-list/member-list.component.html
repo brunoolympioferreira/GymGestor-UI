@@ -1,0 +1,92 @@
+<div class="member-list-container">
+    <mat-card>
+        <div class="member-filter">
+            <mat-card-title>Listagem de Membros</mat-card-title>
+
+            <div class="filter-row">
+                <mat-form-field appearance="outline">
+                    <mat-label>ID</mat-label>
+                    <input matInput [(ngModel)]="filter.id" placeholder="Filtrar por ID" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Nome</mat-label>
+                    <input matInput [(ngModel)]="filter.fullName" placeholder="Filtrar por Nome" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>CPF</mat-label>
+                    <input matInput [(ngModel)]="filter.cpf" placeholder="Filtrar por CPF" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput [(ngModel)]="filter.email" placeholder="Filtrar por Email" />
+                </mat-form-field>
+
+                <div class="filter-actions">
+                    <button mat-stroked-button color="primary" (click)="clearFilter()">Limpar</button>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+
+    <!-- Botão de cadastro -->
+    <div class="add-member-button">
+        <button mat-flat-button color="primary" (click)="openNewMemberDialog()">
+            <mat-icon>person_add</mat-icon>
+            Cadastrar Novo Membro
+        </button>
+    </div>
+
+    <mat-card class="table-container">
+        <table mat-table [dataSource]="filteredMembers" class="mat-elevation-z2">
+
+            <!-- Nome -->
+            <ng-container matColumnDef="fullName">
+                <th mat-header-cell *matHeaderCellDef> Nome </th>
+                <td mat-cell *matCellDef="let member"> {{ member.fullName }} </td>
+            </ng-container>
+
+            <!-- CPF -->
+            <ng-container matColumnDef="cpf">
+                <th mat-header-cell *matHeaderCellDef> CPF </th>
+                <td mat-cell *matCellDef="let member"> {{ member.cpf | mask: '000.000.000-00' }} </td>
+            </ng-container>
+
+            <!-- Email -->
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> Email </th>
+                <td mat-cell *matCellDef="let member"> {{ member.email }} </td>
+            </ng-container>
+
+            <!-- Phone -->
+            <ng-container matColumnDef="phone">
+                <th mat-header-cell *matHeaderCellDef> Telefone </th>
+                <td mat-cell *matCellDef="let member"> {{ member.phone }} </td>
+            </ng-container>
+
+            <!-- Ações -->
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Ações </th>
+                <td mat-cell *matCellDef="let member">
+                    <button mat-icon-button color="primary" (click)="viewDetails(member)" matTooltip="Detalhes">
+                        <mat-icon>visibility</mat-icon>
+                    </button>
+                    <button mat-icon-button color="accent" (click)="openEditDialog(member.id)" matTooltip="Editar">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+        </table>
+
+
+        <div *ngIf="filteredMembers.length === 0" class="no-results">
+            Nenhum membro encontrado com os filtros aplicados.
+        </div>
+    </mat-card>
+</div>

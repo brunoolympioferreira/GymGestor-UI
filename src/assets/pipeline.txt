@@ -1,4 +1,8 @@
--> Criar Sessao Usuario no menu superior lado direito (icone usuario)
- -> Deletar Usuário (Admin)
- -> Buscar usuário (Admin)
- -> Listar todos usuários (Admin)
+Spint 1.1 -> Cadastro de Membros
+1.1.1 -> Listagem de Membro
+1.1.2 -> Cadastro de Membro
+1.1.3 -> Detalhes de Membro
+1.1.4 -> Editar Membro
+
+
+-> Adicionar um pipe para criar uma mascara de cpf na listagem de membros.
