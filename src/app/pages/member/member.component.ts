@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MemberService } from '../../services/member.service';
 import { Member } from '../../shared/models/member';
 import { delay } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-member',
@@ -11,6 +12,7 @@ import { delay } from 'rxjs';
 export class MemberComponent implements OnInit {
   members: Member[] = [];
   memberService = inject(MemberService);
+  snackBar = inject(MatSnackBar);
 
   ngOnInit(): void {
     this.loadMembers();
@@ -39,5 +41,15 @@ export class MemberComponent implements OnInit {
 
   onMemberCreated(): void {
     this.loadMembers();
+  }
+
+  onMemberUpdated(): void {
+    this.loadMembers();
+    this.snackBar.open('Membro atualizado com sucesso!', 'Fechar', {
+      duration: 3000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      panelClass: ['success-snackbar']
+    });
   }
 }

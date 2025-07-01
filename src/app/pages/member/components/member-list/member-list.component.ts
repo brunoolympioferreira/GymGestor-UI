@@ -17,6 +17,7 @@ export class MemberListComponent implements OnInit {
   @Output() view = new EventEmitter<string>();
   @Output() edit = new EventEmitter<string>();
   @Output() memberCreated = new EventEmitter<void>();
+  @Output() memberUpdated = new EventEmitter<void>();
 
   dialog = inject(MatDialog);
   memberService = inject(MemberService);
@@ -82,8 +83,11 @@ export class MemberListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.loadMembers();
+        this.memberUpdated.emit();
       }
+    });
+    dialogRef.componentInstance.memberUpdated.subscribe(() => {
+      this.memberUpdated.emit();
     });
   }
 }

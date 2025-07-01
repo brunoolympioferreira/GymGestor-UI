@@ -8,7 +8,7 @@ import { MemberListComponent } from './components/member-list/member-list.compon
 import { SharedModule } from '../../shared/shared.module';
 import { CreateMemberFormComponent } from './components/create-member-form/create-member-form.component';
 
-import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { NgxMaskDirective, provideNgxMask, NgxMaskPipe } from 'ngx-mask';
 import { MemberDetailComponent } from './components/member-detail/member-detail.component';
 import { MemberUpdateComponent } from './components/member-update/member-update.component';
 
@@ -26,7 +26,8 @@ import { MemberUpdateComponent } from './components/member-update/member-update.
     FormsModule,
     SharedModule,
     ReactiveFormsModule,
-    NgxMaskDirective
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
   providers: [provideNgxMask()]
 })

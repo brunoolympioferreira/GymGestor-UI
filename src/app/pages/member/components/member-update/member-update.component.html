@@ -1,1 +1,41 @@
-<p>member-update works!</p>
+<h2 mat-dialog-title>Atualizar Membro</h2>
+<mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill"><mat-label>Email</mat-label><input matInput
+                formControlName="email" /></mat-form-field>
+        <mat-form-field appearance="fill"><mat-label>Telefone</mat-label><input matInput
+                formControlName="phone" /></mat-form-field>
+        <mat-form-field appearance="fill"><mat-label>URL da Foto</mat-label><input matInput
+                formControlName="photoUrl" /></mat-form-field>
+
+        <div formGroupName="address">
+            <h3>Endereço</h3>
+            <mat-form-field appearance="fill"><mat-label>Rua</mat-label><input matInput
+                    formControlName="street" /></mat-form-field>
+            <mat-form-field appearance="fill"><mat-label>Número</mat-label><input matInput
+                    formControlName="number" /></mat-form-field>
+            <mat-form-field appearance="fill"><mat-label>Cidade</mat-label><input matInput
+                    formControlName="city" /></mat-form-field>
+            <mat-form-field appearance="fill"><mat-label>Estado</mat-label><input matInput
+                    formControlName="state" /></mat-form-field>
+            <mat-form-field appearance="fill"><mat-label>CEP</mat-label><input matInput
+                    formControlName="zipCode" /></mat-form-field>
+        </div>
+
+        <div formArrayName="healthRecords">
+            <h3>Histórico de Saúde</h3>
+            <div *ngFor="let record of healthRecords.controls; let i = index" [formGroupName]="i">
+                <mat-form-field appearance="fill"><mat-label>Título</mat-label><input matInput
+                        formControlName="title" /></mat-form-field>
+                <mat-form-field appearance="fill"><mat-label>Descrição</mat-label><textarea matInput
+                        formControlName="description"></textarea></mat-form-field>
+            </div>
+            <button mat-button type="button" (click)="addHealthRecord()">Adicionar Registro</button>
+        </div>
+
+        <mat-dialog-actions align="end">
+            <button mat-button type="button" (click)="onCancel()">Cancelar</button>
+            <button mat-raised-button color="primary" type="submit">Atualizar</button>
+        </mat-dialog-actions>
+    </form>
+</mat-dialog-content>
